@@ -1,0 +1,25 @@
+# This image will have the flash plugin v32_0r0_330 installed in basilisk.
+# This does NOT have the flash SA installed. For that, see Dockerfile.flashSA
+# Tag this as fpdocker-flash32_0r0_330:20.04.1-0.X and fpdocker-flash32_0r0_330:latest
+
+# We build off of our existing basilisk image.
+FROM fpdocker-basilisk:latest
+
+# Install dependencies
+RUN apt-get install --yes libnss3 libgtk2.0-0
+
+# May be overriden at build-time if you want a slightly different version.
+# If you do that, tag it differently.
+ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/356/fp_32.0.0.330_archive.zip/32_0_r0_330%2Fflashplayer32_0r0_330_linux.x86_64.tar.gz"
+
+# Make a directory for Flash Player to be extracted into.
+RUN mkdir flash
+# Download and extract Flash Player.
+RUN wget -qO- $FP_URL | tar xz --directory flash
+
+# Install Flash Player and its plugin to the required dirs.
+RUN cp -r /flash/usr/* /usr/
+RUN cp flash/libflashplayer.so $MOZ_PLUGIN_PATH/
+
+# Cleanup: delete the extracted directory.
+RUN rm -r flash

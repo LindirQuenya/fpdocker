@@ -19,7 +19,7 @@ RUN wget -qO- https://us.basilisk-browser.org/release/basilisk-latest.linux64.ta
 
 # Copy config files.
 # This one makes audio work.
-COPY pulse-client.conf /etc/pulse/client.conf
+COPY config/pulse-client.conf /etc/pulse/client.conf
 # These two configure basilisk.
-COPY autoconfig.js /basilisk/defaults/pref/autoconfig.js
-COPY flashpoint.cfg /basilisk/flashpoint.cfg
+COPY config/autoconfig.js /basilisk/defaults/pref/autoconfig.js
+COPY config/flashpoint.cfg /basilisk/flashpoint.cfg

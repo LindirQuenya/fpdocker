@@ -1,1 +1,4 @@
+# Ignore my debug log directory.
 debuglogs
+# Ignore UnityTest, FlashTest, etc dirs.
+*Test

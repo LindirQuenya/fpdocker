@@ -1,0 +1,16 @@
+# This image will have the basilisk browser installed, with OpenGL support.
+# Tag this as fpdocker-basilisk:20.04.1-0.X and fpdocker-basilisk:latest
+
+# Build off of our hardware-accelerated base image.
+FROM fpdocker-base:latest
+
+# Install the latest basilisk. The binary will be located at /basilisk/basilisk
+RUN wget -qO- https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz | tar xJ
+
+# These two files configure basilisk.
+COPY config/autoconfig.js /basilisk/defaults/pref/autoconfig.js
+COPY config/flashpoint.cfg /basilisk/flashpoint.cfg
+
+# Setup plugins. None installed yet, but we'll get there.
+RUN mkdir /basilisk-plugins
+ENV MOZ_PLUGIN_PATH=/basilisk-plugins

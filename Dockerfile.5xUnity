@@ -1,0 +1,9 @@
+# Tag as fpdocker-5xunity:20.04.1-0.X and fpdocker-5xunity:latest
+
+# We're building on top of the pipelight image.
+FROM fpdocker-pipelight:latest
+# Enable unity3d.
+RUN pipelight-plugin --enable unity3d
+# Fix Unity's hash. Without this, the setup will fail.
+RUN sed -i "s/211563777a14bd3956a4d74ce8a2ed8f6374c13d7ba495d12329f5eb346b9e99/$(wget -qO- http://webplayer.unity3d.com/download_webplayer-3.x/UnityWebPlayer.exe | sha256sum | cut -d ' ' -f1)/g" /usr/local/share/pipelight/install-dependency
+# Initial setup will run when Basilisk is opened.

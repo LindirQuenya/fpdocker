@@ -1,0 +1,19 @@
+#Run with: 
+#   xhost +
+#   docker run -v "/tmp/.X11-unix:/tmp/.X11-unix" -e "DISPLAY=$DISPLAY" --device=/dev/dri:/dev/dri \
+#              -v "/run/user/$(id -u)/pulse:/run/user/0/pulse" -v "/home/$USER/.config/pulse:/root/.config/pulse" \
+#              -it {IMAGE_NAME} bash
+# Helpful audio explaination: https://joonas.fi/2020/12/audio-in-docker-containers-linux-audio-subsystems-spotifyd
+# Helpful video explaination: http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration
+
+# Continue to add to the Basilisk image.
+FROM fpdocker-basilisk:latest
+
+# Add i386 support to apt.
+RUN dpkg --add-architecture i386 
+# Install Wine's repo
+RUN wget -qO- https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
+RUN echo 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' > /etc/apt/sources.list.d/wine.list
+# Update the package lists, and install wine.
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes winehq-staging

@@ -1,0 +1,25 @@
+# This should be tagged: fpdocker-basilisk:VW.XY.Z-0.R
+# VW.XY.Z is the Ubuntu release (e.g. 20.04.1)
+# R is the revision of this image.
+# In total, this looks like: fpdocker-basilisk:20.04.1-0.3
+#Run with:
+#   xhost +
+#   docker run -v "/tmp/.X11-unix:/tmp/.X11-unix" -e "DISPLAY=$DISPLAY" --device=/dev/dri:/dev/dri \
+#              -v "/run/user/$(id -u)/pulse:/run/user/0/pulse" -v "/home/$USER/.config/pulse:/root/.config/pulse" \
+#              -it {IMAGE_NAME} bash
+# Helpful audio explaination: https://joonas.fi/2020/12/audio-in-docker-containers-linux-audio-subsystems-spotifyd
+# Helpful video explaination: http://wiki.ros.org/docker/Tutorials/Hardware%20Acceleration
+FROM ubuntu:latest
+
+# Update apt, and install the required tools and graphical libraries.
+RUN apt-get update
+# Environment vairable ensures that apt doesn't prompt us for anything.
+RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes libgl1-mesa-glx libgl1-mesa-dri libgtk-3-0 libasound2 libdbus-glib-1-2 libxt6 pulseaudio-utils libpulse0 xz-utils wget gnupg
+RUN wget -qO- https://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz | tar xJ
+
+# Copy config files.
+# This one makes audio work.
+COPY pulse-client.conf /etc/pulse/client.conf
+# These two configure basilisk.
+COPY autoconfig.js /basilisk/defaults/pref/autoconfig.js
+COPY flashpoint.cfg /basilisk/flashpoint.cfg

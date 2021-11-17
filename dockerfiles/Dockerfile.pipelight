@@ -26,11 +26,11 @@ FROM fpdocker-wine:latest
 WORKDIR /
 # Copy the deb from the builder, and install it.
 COPY --from=builder /pipelight-multi-0.2.8.2~ubuntu16.04.1/pipelight-multi_0.2.8.2-1_amd64.deb /pipelight-multi_0.2.8.2-1_amd64.deb
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes ./pipelight-multi_0.2.8.2-1_amd64.deb
+RUN apt-get install --yes /pipelight-multi_0.2.8.2-1_amd64.deb
 # We don't need the deb anymore, delete it.
-RUN rm pipelight-multi_0.2.8.2-1_amd64.deb
+RUN rm /pipelight-multi_0.2.8.2-1_amd64.deb
 # Make the plugins for Basilisk.
 RUN mkdir -p /usr/lib/mozilla/plugins
 RUN pipelight-plugin --create-mozilla-plugins
 # Cleanup unneeded packages.
-RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes
+RUN apt-get autoremove --yes

@@ -1,5 +1,12 @@
 ARG CURRVERSION="20.04.1-0.5"
 
+# Build all the SA images in one go.
+flash-sa:
+    BUILD +flash-sa32.0.0.330
+    BUILD +flash-sa11.2.202.644
+    BUILD +flash-sa29.0.0.171
+    BUILD +flash-sa28.0.0.161
+    BUILD +flash-sa27.0.0.187
 
 # Build a flash stand-alone image. Feature: Flash SA v32_0r0_330.
 flash-sa32.0.0.330:
@@ -49,4 +56,74 @@ flash-sa11.2.202.644:
     
     SAVE IMAGE fpdocker-flash-sa11_2r202_644:latest
     SAVE IMAGE fpdocker-flash-sa11_2r202_644:$CURRVERSION
+
+
+# Build a flash stand-alone image. Feature: Flash SA v29_0r0_171.
+flash-sa29.0.0.171:
+    FROM ../+hwaccel
+    
+    # Install dependencies
+    RUN apt-get install --yes libnss3 libgtk2.0-0 libcurl4 libcanberra-pulse
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/333/fp_29.0.0.171_archive.zip/29_0_r0_171%2Fflashplayer29_0r0_171_linux_sa.x86_64.tar.gz"
+
+    # Make a directory for Flash Player to be extracted into.
+    RUN mkdir /flash-sa
+    # Download and extract Flash Player.
+    RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
+    
+    # Cleanup
+    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
+    
+    SAVE IMAGE fpdocker-flash-sa29_0r0_171:latest
+    SAVE IMAGE fpdocker-flash-sa29_0r0_171:$CURRVERSION
+
+
+# Build a flash stand-alone image. Feature: Flash SA v29_0r0_171.
+flash-sa28.0.0.161:
+    FROM ../+hwaccel
+    
+    # Install dependencies
+    RUN apt-get install --yes libnss3 libgtk2.0-0 libcurl4 libcanberra-pulse
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/330/fp_28.0.0.161_archive.zip/28_0_r0_161%2Fflashplayer28_0r0_161_linux_sa.x86_64.tar.gz"
+
+    # Make a directory for Flash Player to be extracted into.
+    RUN mkdir /flash-sa
+    # Download and extract Flash Player.
+    RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
+    
+    # Cleanup
+    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
+    
+    SAVE IMAGE fpdocker-flash-sa28_0r0_161:latest
+    SAVE IMAGE fpdocker-flash-sa28_0r0_161:$CURRVERSION
+
+
+# Build a flash stand-alone image. Feature: Flash SA v29_0r0_171.
+flash-sa27.0.0.187:
+    FROM ../+hwaccel
+    
+    # Install dependencies
+    RUN apt-get install --yes libnss3 libgtk2.0-0 libcurl4 libcanberra-pulse
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/downloads/327/fp_27.0.0.187_archive.zip/27_0_r0_187%2Fflashplayer27_0r0_187_linux_sa.x86_64.tar.gz"
+
+    # Make a directory for Flash Player to be extracted into.
+    RUN mkdir /flash-sa
+    # Download and extract Flash Player.
+    RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
+    
+    # Cleanup
+    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
+    
+    SAVE IMAGE fpdocker-flash-sa27_0r0_187:latest
+    SAVE IMAGE fpdocker-flash-sa27_0r0_187:$CURRVERSION
+
 

@@ -4,7 +4,7 @@
 # Use with caution, it does what it says without prompting.
 
 # Set the target version here so that I don't have to manually change all of those.
-CURRVERSION="$CURRVERSION"
+CURRVERSION="20.04.1-0.5"
 
 docker rmi fpdocker-base:latest fpdocker-base:$CURRVERSION \
            fpdocker-basilisk:latest fpdocker-basilisk:$CURRVERSION \

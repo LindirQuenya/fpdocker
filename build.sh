@@ -24,11 +24,16 @@ docker build . -f Dockerfile.flash32_0r0_330 -t fpdocker-flash32_0r0_330:$CURRVE
 docker build . -f Dockerfile.flash11_2r202_644 -t fpdocker-flash11_2r202_644:$CURRVERSION -t fpdocker-flash11_2r202_644:latest
 
 # Leaf image:
-#        ubuntu => base => flashSA32_0r0_330
+#        ubuntu => base => flash-sa32_0r0_330
 # Build a flash stand-alone image. Feature: Flash SA v32_0r0_330.
 docker build . -f Dockerfile.flashSA32_0r0_330 -t fpdocker-flash-sa32_0r0_330:$CURRVERSION -t fpdocker-flash-sa32_0r0_330:latest
 
-# Future: more flashSA images, with wine.
+# Leaf image:
+#        ubuntu => base => flash-sa11_2r202_644
+# Build a flash stand-alone image. Feature: Flash SA v11.2.202.644
+docker build . -f Dockerfile.flashSA11_2r202_644 -t fpdocker-flash-sa11_2r202_644:$CURRVERSION -t fpdocker-flash-sa11_2r202_644:latest
+
+# Future: more flashSA images, with wine. Specifically, see here: https://nexus.fp.unstable.life/#browse/browse:flash-binaries:projectors
 
 # Leaf image:             ubuntu => builder =>\
 #        ubuntu => base => basilisk => wine => pipelight => 5xunity

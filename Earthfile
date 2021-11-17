@@ -2,9 +2,8 @@ ARG CURRVERSION="20.04.1-0.4"
 
 # This builds all the leaf images.
 all-leaf:
-    BUILD ./earthfiles/unity+unity5x
-    BUILD ./earthfiles/flash-plugin+flash32.0.0.330
-    BUILD ./earthfiles/flash-plugin+flash11.2.202.644
+    BUILD ./earthfiles/unity+unity
+    BUILD ./earthfiles/flash-plugin+flash-plugin
     BUILD ./earthfiles/flash-sa+flash-sa
 
 all-trunk:

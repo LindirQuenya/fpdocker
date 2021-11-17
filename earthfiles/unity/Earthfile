@@ -1,5 +1,8 @@
 ARG CURRVERSION="20.04.1-0.5"
 
+# Build all the unity images in one go.
+unity:
+    BUILD +unity5x
 
 # Build the 5xunity image. Feature: Unity Web Player 5.x in Basilisk through Pipelight/WINE.
 unity5x:

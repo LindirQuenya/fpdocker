@@ -1,6 +1,12 @@
 ARG CURRVERSION="20.04.1-0.5"
 
 
+# Build all the flash plugin images in one go.
+flash-plugin:
+    BUILD +flash32.0.0.330
+    BUILD +flash11.2.202.644
+
+
 # Build a flash plugin image. Feature: Flash Plugin v32_0r0_330.
 flash32.0.0.330:
     FROM ../+basilisk

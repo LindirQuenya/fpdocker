@@ -1,9 +1,9 @@
 # fpdocker
 Dockerfiles for use in portable Linux version of the Flashpoint Project.
 
-Build them with `build.sh`, and run the resulting unity-supporting (ish) container with `run.sh`.
+Build them with `build.sh`, and run one of the resulting containers with `IMAGENAME=fpdocker-{*something*} run.sh`.
 
-That should give you a shell. From there, open basilisk (`/basilisk/basilisk`), and try opening a page that requires unity.
+That should give you a shell. From there, open basilisk (`/basilisk/basilisk`), and try opening a page that requires the technology corresponding to the something that you filled in.
 
 If you want to keep the container around after running, use `run-keep.sh` instead of `run.sh`.
 

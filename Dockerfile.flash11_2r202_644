@@ -13,13 +13,13 @@ RUN apt-get install --yes libnss3 libgtk2.0-0 libcurl4 libcanberra-pulse
 ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/downloads/262/fp_11.2.202.644_archive.zip/11_2_r202_644_64bit%2Fflashplayer11_2r202_644_linux.x86_64.tar.gz"
 
 # Make a directory for Flash Player to be extracted into.
-RUN mkdir flash
+RUN mkdir /flash
 # Download and extract Flash Player.
-RUN wget -qO- $FP_URL | tar xz --directory flash
+RUN wget -qO- $FP_URL | tar xz --directory /flash
 
 # Install Flash Player and its plugin to the required dirs.
 RUN cp -r /flash/usr/* /usr/
-RUN cp flash/libflashplayer.so $MOZ_PLUGIN_PATH/
+RUN cp /flash/libflashplayer.so $MOZ_PLUGIN_PATH/
 
 # Cleanup: delete the extracted directory.
-RUN rm -r flash
+RUN rm -r /flash

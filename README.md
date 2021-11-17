@@ -19,3 +19,5 @@ These assumptions are as follows:
  - The Pulseaudio authentication cookie is available in `/home/$USER/.config/pulse/`.
 
 The above assumptions are not hard rules: I expect that all sufficiently advanced users will find it easy to rewrite my scripts to fit their environments. I only detail the environment that I have configured it for, and that I expect the defaults to work in.
+
+If you do customize the scripts, please send me a pull request! I would love to incorporate your changes.

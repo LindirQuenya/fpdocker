@@ -1,4 +1,5 @@
 # Ignore my debug log directory.
 debuglogs
-# Ignore UnityTest, as it's simply too big.
-UnityTest
+# Ignore the local UnityTest files, as they're simply too big.
+UnityTest/*.html
+UnityTest/*.unity3d

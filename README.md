@@ -3,6 +3,8 @@ Dockerfiles for use in portable Linux version of the Flashpoint Project.
 
 To build this, you will need [earthly](earthly.dev).
 
+Be warned that the Unity images are currently compiled with debug mode on, which is *very* verbose.
+
 Build and Run
 ========
 Build all the containers with `earthly +all-leaf`, and run one of the resulting containers with `IMAGENAME=fpdocker-{*something*} ./scripts/run.sh`.

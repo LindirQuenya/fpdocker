@@ -23,8 +23,12 @@ docker build . -f Dockerfile.flash32_0r0_330 -t fpdocker-flash32_0r0_330:$CURRVE
 # Build a flash plugin image. Feature: Flash Plugin v11_2r202_644.
 docker build . -f Dockerfile.flash11_2r202_644 -t fpdocker-flash11_2r202_644:$CURRVERSION -t fpdocker-flash11_2r202_644:latest
 
-# Future: more flash plugin images.
-# Future: flashSA images.
+# Leaf image:
+#        ubuntu => base => flashSA32_0r0_330
+# Build a flash stand-alone image. Feature: Flash SA v32_0r0_330.
+docker build . -f Dockerfile.flashSA32_0r0_330 -t fpdocker-flash-sa32_0r0_330:$CURRVERSION -t fpdocker-flash-sa32_0r0_330:latest
+
+# Future: more flashSA images, with wine.
 
 # Leaf image:             ubuntu => builder =>\
 #        ubuntu => base => basilisk => wine => pipelight => 5xunity

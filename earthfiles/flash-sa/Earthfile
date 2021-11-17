@@ -1,0 +1,52 @@
+ARG CURRVERSION="20.04.1-0.5"
+
+
+# Build a flash stand-alone image. Feature: Flash SA v32_0r0_330.
+flash-sa32.0.0.330:
+    FROM ../+hwaccel
+    
+    # Install dependencies
+    RUN apt-get install --yes libnss3 libgtk2.0-0 libcurl4 libcanberra-pulse
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/356/fp_32.0.0.330_archive.zip/32_0_r0_330%2Fflashplayer32_0r0_330_linux_sa.x86_64.tar.gz"
+    
+    # Make a directory for Flash Player to be extracted into.
+    RUN mkdir /flash-sa
+    # Download and extract Flash Player.
+    RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
+    
+    # Cleanup
+    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
+    
+    SAVE IMAGE fpdocker-flash-sa32_0r0_330:latest
+    SAVE IMAGE fpdocker-flash-sa32_0r0_330:$CURRVERSION
+
+
+# Build a flash stand-alone image. Feature: Flash SA v11.2.202.644
+flash-sa11.2.202.644:
+    FROM ../+hwaccel
+    
+    # SA 11 is 32 bit only, we need to install 32-bit libraries.
+    RUN dpkg --add-architecture i386
+    RUN apt-get update
+    
+    # Install dependencies
+    RUN apt-get install --yes libnss3:i386 libgtk2.0-0:i386 libcurl4:i386 libcanberra-pulse:i386 libxt6:i386 libasound2-plugins:i386
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://archive.org/download/flashplayerarchivedversions2/downloads/262/fp_11.2.202.644_archive.zip/11_2_r202_644_32bit%2Fflashplayer11_2r202_644_linux_sa.i386.tar.gz"
+    
+    # Make a directory for Flash Player to be extracted into.
+    RUN mkdir /flash-sa
+    # Download and extract Flash Player.
+    RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
+    
+    # Cleanup
+    RUN rm -r /flash-sa/LGPL
+    
+    SAVE IMAGE fpdocker-flash-sa11_2r202_644:latest
+    SAVE IMAGE fpdocker-flash-sa11_2r202_644:$CURRVERSION
+

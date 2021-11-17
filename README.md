@@ -3,7 +3,8 @@ Dockerfiles for use in portable Linux version of the Flashpoint Project.
 
 Scripts
 ========
-Build all the containers with `build.sh`, and run one of the resulting containers with `IMAGENAME=fpdocker-{*something*} run.sh`.
+Build all the containers with `build.sh` or `earthly +all-leaf`, and run one of the resulting containers with `IMAGENAME=fpdocker-{*something*} run.sh`.  
+Earthly does some of the steps in paralell, which speeds things up somewhat. Other than that, they are the same.
 
 If you don't want a prompt for `docker image prune`-ing, and you are VERY sure, you may use `build-noprompt.sh`.
 

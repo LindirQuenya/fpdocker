@@ -24,9 +24,6 @@ flash-sa32.0.0.330:
     # Download and extract Flash Player.
     RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
     
-    # Cleanup
-    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
-    
     SAVE IMAGE fpdocker-flash-sa32_0r0_330:latest
     SAVE IMAGE fpdocker-flash-sa32_0r0_330:$CURRVERSION
 
@@ -51,9 +48,6 @@ flash-sa11.2.202.644:
     # Download and extract Flash Player.
     RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
     
-    # Cleanup
-    RUN rm -r /flash-sa/LGPL
-    
     SAVE IMAGE fpdocker-flash-sa11_2r202_644:latest
     SAVE IMAGE fpdocker-flash-sa11_2r202_644:$CURRVERSION
 
@@ -73,9 +67,6 @@ flash-sa29.0.0.171:
     RUN mkdir /flash-sa
     # Download and extract Flash Player.
     RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
-    
-    # Cleanup
-    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
     
     SAVE IMAGE fpdocker-flash-sa29_0r0_171:latest
     SAVE IMAGE fpdocker-flash-sa29_0r0_171:$CURRVERSION
@@ -97,9 +88,6 @@ flash-sa28.0.0.161:
     # Download and extract Flash Player.
     RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
     
-    # Cleanup
-    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
-    
     SAVE IMAGE fpdocker-flash-sa28_0r0_161:latest
     SAVE IMAGE fpdocker-flash-sa28_0r0_161:$CURRVERSION
 
@@ -120,10 +108,5 @@ flash-sa27.0.0.187:
     # Download and extract Flash Player.
     RUN wget -qO- $FP_URL | tar xz --directory /flash-sa
     
-    # Cleanup
-    RUN rm -r /flash-sa/LGPL /flash-sa/license.pdf
-    
     SAVE IMAGE fpdocker-flash-sa27_0r0_187:latest
     SAVE IMAGE fpdocker-flash-sa27_0r0_187:$CURRVERSION
-
-

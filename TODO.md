@@ -1,6 +1,6 @@
 Things that I still need to work on:
  - Older SA projector versions, see https://nexus.fp.unstable.life/#browse/browse:flash-binaries:projectors for a list.
- - Same list as above, but windows versions on wine.
+ - Get wined SA v2 and v3 working.
  - Fix Xhost authentication, instead of just disabling it.
  - Fix unity. It's broken right now. This will likely require messing with Wine and Pipelight.
  - Add support for more unity versions.

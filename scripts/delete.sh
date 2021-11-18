@@ -3,15 +3,15 @@
 # This script deletes all the flashpoint docker images.
 # Use with caution, it does what it says without prompting.
 
-# Set the target version here so that I don't have to manually change all of those.
-CURRVERSION="20.04.1-0.5"
+# Credit for trick with sed: https://stackoverflow.com/a/54840522
+# Credit for looping over lines: https://stackoverflow.com/a/10752407
 
-docker rmi fpdocker-base:latest fpdocker-base:$CURRVERSION \
-           fpdocker-basilisk:latest fpdocker-basilisk:$CURRVERSION \
-           fpdocker-wine:latest fpdocker-wine:$CURRVERSION \
-           fpdocker-pipelight:latest fpdocker-pipelight:$CURRVERSION \
-           fpdocker-5xunity:latest fpdocker-5xunity:$CURRVERSION \
-           fpdocker-flash32_0r0_330:latest fpdocker-flash32_0r0_330:$CURRVERSION \
-           fpdocker-flash11_2r202_644:latest fpdocker-flash11_2r202_644:$CURRVERSION \
-           fpdocker-flash-sa32_0r0_330:latest fpdocker-flash-sa32_0r0_330:$CURRVERSION \
-           fpdocker-flash-sa11_2r202_644:latest fpdocker-flash-sa11_2r202_644:$CURRVERSION
+# Runs docker images, replaces multi-space sections with single spaces,
+# greps for only lines that contain fpdocker, and feeds the output one
+# line at a time to a subshell command.
+docker images | sed 's/  */ /g' | grep fpdocker | while read -r line
+do
+  # $line is of the format: "fpdocker-something tag hash n timescale ago size"
+  # To rmi this, we just need the first two. We use cut to select them.
+  docker rmi "$(echo $line | cut -d ' ' -f 1):$(echo $line | cut -d ' ' -f 2)"
+done

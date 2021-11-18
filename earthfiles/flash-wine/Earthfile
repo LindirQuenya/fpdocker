@@ -1,0 +1,441 @@
+ARG CURRVERSION="20.04.1-0.5"
+
+# Build all the SA images in one go.
+flash-wine:
+    BUILD +flash-wine32.0.0.363
+    BUILD +flash-wine29.0.0.171
+    BUILD +flash-wine28.0.0.161
+    BUILD +flash-wine27.0.0.187
+    BUILD +flash-wine19.0.0.245
+    BUILD +flash-wine14.0.0.179
+    BUILD +flash-wine12.0.0.77
+    BUILD +flash-wine11.9.900.152
+    BUILD +flash-wine10.3.183.90
+    BUILD +flash-wine9.0.277.0
+    BUILD +flash-wine9.0.16.0
+    BUILD +flash-wine8.0.22.0
+    BUILD +flash-wine7.0.19.0
+    BUILD +flash-wine7.0.14.0
+    BUILD +flash-wine6.0.79.0
+    BUILD +flash-wine6.0.65.0
+    BUILD +flash-wine6.0.21.0
+    BUILD +flash-wine6.0.4.0
+    BUILD +flash-wine5.0.30.0
+    BUILD +flash-wine4.0.7.0
+    BUILD +flash-wine4.0.4.0
+    BUILD +flash-wine3.0.8.0
+    BUILD +flash-wine2.0.0.11
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v32_0r0_363.
+flash-wine32.0.0.363:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/32_0_0_363/flashplayer32_0r0_363_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine32_0r0_363:latest
+    SAVE IMAGE fpdocker-flash-wine32_0r0_363:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v29_0r0_171.
+flash-wine29.0.0.171:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/29_0_0_171/flashplayer29_0r0_171_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine29_0r0_171:latest
+    SAVE IMAGE fpdocker-flash-wine29_0r0_171:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v28_0r0_161.
+flash-wine28.0.0.161:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/28_0_0_161/flashplayer28_0r0_161_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine28_0r0_161:latest
+    SAVE IMAGE fpdocker-flash-wine28_0r0_161:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v27_0r0_187.
+flash-wine27.0.0.187:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/27_0_0_187/flashplayer27_0r0_187_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine27_0r0_187:latest
+    SAVE IMAGE fpdocker-flash-wine27_0r0_187:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v19_0r0_245.
+flash-wine19.0.0.245:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/19_0_0_245/flashplayer19_0r0_245_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine19_0r0_245:latest
+    SAVE IMAGE fpdocker-flash-wine19_0r0_245:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v14_0r0_179.
+flash-wine14.0.0.179:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/14_0_0_179/flashplayer14_0r0_179_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine14_0r0_179:latest
+    SAVE IMAGE fpdocker-flash-wine14_0r0_179:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v12_0r0_77.
+flash-wine12.0.0.77:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/12_0_0_77/flashplayer12_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine12_0r0_77:latest
+    SAVE IMAGE fpdocker-flash-wine12_0r0_77:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v11_9r900_152.
+flash-wine11.9.900.152:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently. Debug is the only version in the repo, using it.
+    # I can't find any non-debug versions on the IA, so I guess this is all we have.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/11_9_900_152/flashplayer11_9r900_152_win_sa_debug.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine11_9r900_152:latest
+    SAVE IMAGE fpdocker-flash-wine11_9r900_152:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v10_3r183_90.
+flash-wine10.3.183.90:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/10_3_183_90/flashplayer_10_3r183_90_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine10_3r183_90:latest
+    SAVE IMAGE fpdocker-flash-wine10_3r183_90:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v9_0r277_0.
+flash-wine9.0.277.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/9_0_277_0/flashplayer9r277_win_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine9_0r277_0:latest
+    SAVE IMAGE fpdocker-flash-wine9_0r277_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v9_0r16_0.
+flash-wine9.0.16.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/9_0_16_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine9_0r16_0:latest
+    SAVE IMAGE fpdocker-flash-wine9_0r16_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v8_0r22_0.
+flash-wine8.0.22.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/8_0_22_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine8_0r22_0:latest
+    SAVE IMAGE fpdocker-flash-wine8_0r22_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v7_0r19_0.
+flash-wine7.0.19.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/7_0_19_0/flashplayer7_0r19_sa.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine7_0r19_0:latest
+    SAVE IMAGE fpdocker-flash-wine7_0r19_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v7_0r14_0.
+flash-wine7.0.14.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/7_0_14_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine7_0r14_0:latest
+    SAVE IMAGE fpdocker-flash-wine7_0r14_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v6_0r79_0.
+flash-wine6.0.79.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/6_0_79_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine6_0r79_0:latest
+    SAVE IMAGE fpdocker-flash-wine6_0r79_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v6_0r65_0.
+flash-wine6.0.65.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/6_0_65_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine6_0r65_0:latest
+    SAVE IMAGE fpdocker-flash-wine6_0r65_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v6_0r21_0.
+flash-wine6.0.21.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/6_0_21_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine6_0r21_0:latest
+    SAVE IMAGE fpdocker-flash-wine6_0r21_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v6_0r4_0.
+flash-wine6.0.4.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/6_0_4_0/SAFlashPlayer.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine6_0r4_0:latest
+    SAVE IMAGE fpdocker-flash-wine6_0r4_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v5_0r30_0.
+flash-wine5.0.30.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/5_0_30_0/FlashPla.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine5_0r30_0:latest
+    SAVE IMAGE fpdocker-flash-wine5_0r30_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v4_0r7_0.
+flash-wine4.0.7.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/4_0_7_0/FlashPla.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine4_0r7_0:latest
+    SAVE IMAGE fpdocker-flash-wine4_0r7_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v4_0r4_0.
+flash-wine4.0.4.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/4_0_4_0/FlashPla.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine4_0r4_0:latest
+    SAVE IMAGE fpdocker-flash-wine4_0r4_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v3_0r8_0.
+flash-wine3.0.8.0:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/3_0_8_0/SwFlsh32.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine3_0r8_0:latest
+    SAVE IMAGE fpdocker-flash-wine3_0r8_0:$CURRVERSION
+
+
+# Build a flash stand-alone-in-wine image. Feature: Windows Flash SA v2_0r0_11.
+flash-wine2.0.0.11:
+    FROM ../+wine
+    
+    # This will disable the mono prompt on wineboot.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    
+    # May be overriden at build-time if you want a slightly different version.
+    # If you do that, tag it differently.
+    ARG FP_URL="https://nexus.fp.unstable.life/repository/flash-binaries/projectors/2_0_0_11/SwFlsh32.exe"
+    
+    # Download Flash Player.
+    RUN wget $FP_URL -qO flashplayer.exe
+    
+    SAVE IMAGE fpdocker-flash-wine2_0r0_11:latest
+    SAVE IMAGE fpdocker-flash-wine2_0r0_11:$CURRVERSION

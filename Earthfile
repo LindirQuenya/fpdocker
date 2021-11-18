@@ -5,6 +5,7 @@ all-leaf:
     BUILD ./earthfiles/unity+unity
     BUILD ./earthfiles/flash-plugin+flash-plugin
     BUILD ./earthfiles/flash-sa+flash-sa
+    BUILD ./earthfiles/flash-wine+flash-wine
 
 all-trunk:
     BUILD ./earthfiles/+base-save

@@ -41,4 +41,9 @@ WORKDIR /usr/src/wine64
 RUN /usr/src/wine-source/configure --enable-win64 --prefix=/opt/wine-staging
 RUN make -j4
 
-
+# Install 32-bit dependencies.
+RUN apt-get install --yes libasound2-dev:i386 libpulse-dev:i386 libdbus-1-dev:i386 libfontconfig-dev:i386 libgnutls28-dev:i386 libjpeg62-turbo-dev:i386 libpng-dev:i386 libtiff-dev:i386 libgl-dev:i386 libunwind-dev:i386 libx11-dev:i386 libxml2-dev:i386 libxslt1-dev:i386 libfaudio-dev:i386 libgstreamer-plugins-base1.0-dev:i386 libgstreamer1.0-dev:i386 libmpg123-dev:i386 libosmesa6-dev:i386 libsdl2-dev:i386 libudev-dev:i386 libvkd3d-dev:i386 libvulkan-dev:i386 libusb-1.0-0-dev:i386 libgsm1-dev:i386 liblcms2-dev:i386 libxcomposite-dev:i386 libjxr-dev:i386 gcc-multilib pkg-config:i386
+# Build WoW64 (32-bit) wine.
+WORKDIR /usr/src/wine32
+RUN PKG_CONFIG_PATH=/usr/lib/pkgconfig /usr/src/wine-source/configure --with-wine64=/usr/src/wine64 --prefix=/opt/wine-staging
+make -j4

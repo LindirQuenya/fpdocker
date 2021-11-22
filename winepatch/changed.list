@@ -1,0 +1,13 @@
+configure.ac
+dlls/winemac.drv/vulkan.c => macvulkan.c
+dlls/winevulkan/make_vulkan
+dlls/winex11.drv/clipboard.c
+dlls/winex11.drv/init.c
+dlls/winex11.drv/opengl.c
+dlls/winex11.drv/vulkan.c
+dlls/winex11.drv/window.c
+dlls/winex11.drv/x11drv.h
+dlls/winex11.drv/x11drv_main.c
+dlls/winex11.drv/xfixes.h
+dlls/winex11.drv/xpresent.h
+include/wine/vulkan_driver.h

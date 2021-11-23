@@ -4,6 +4,7 @@ Things that I still need to work on:
  - Fix Xhost authentication, instead of just disabling it.
  - Fix unity. It's broken right now. This will likely require messing with Wine and Pipelight.
     - Perhaps it's a problem with wine/dxvk? Look here: https://bugs.winehq.org/show_bug.cgi?id=45277
+ - Move Wine key to a trusted.gpg.d approach, rather than the deprecated apt-key.
  - Add support for more unity versions.
  - Auto-enable basilisk plugins.
  - (Low-priority) Wine-d versions of flash plugins, maybe through Pipelight? Modification might be needed.

@@ -3,3 +3,4 @@ debuglogs
 # Ignore the local UnityTest files, as they're simply too big.
 UnityTest/*.html
 UnityTest/*.unity3d
+*.deb

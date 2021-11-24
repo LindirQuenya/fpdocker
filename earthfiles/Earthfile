@@ -50,13 +50,34 @@ wine:
     
     # Add i386 support to apt.
     RUN dpkg --add-architecture i386 
-    # Install Wine's repo
+    # Install Wine's repo, to get libvkd3d1>=1.2
     RUN wget -qO- https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
     RUN echo 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' > /etc/apt/sources.list.d/wine.list
-    # Update the package lists, and install wine.
+    
+    # Copy our patched wine package over.
+    COPY winepatch/built/wine-staging-amd64-local_6.19-1_amd64.deb /wine-staging-amd64-local_6.19-1_amd64.deb
+    COPY winepatch/built/wine-staging-i386-local_6.19-1_i386.deb /wine-staging-i386-local_6.19-1_i386.deb
+    # Update the package lists, and install wine. Also install cabextract, which allows winetricks to work.
     RUN apt-get update
-    RUN apt-get install --yes winehq-staging
+    RUN apt-get install --yes /wine-staging-amd64-local_6.19-1_amd64.deb /wine-staging-i386-local_6.19-1_i386.deb xvfb cabextract
+    
+    # Cleanup unneeded debs.
+    RUN rm /wine-staging-i386-local_6.19-1_i386.deb /wine-staging-amd64-local_6.19-1_amd64.deb
+    
+    # Install winetricks.
+    RUN wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O /opt/wine-staging/bin/winetricks
+    RUN chmod +x /opt/wine-staging/bin/winetricks
+    # Add wine-staging to PATH
+    ENV PATH="/opt/wine-staging/bin:${PATH}"
+    # Disable wine startup prompts. This allows us to init wine without interactivity.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    # Set wineprefix to be the pipelight one.
+    # This will be confusing, but it will save space.
+    # Remember, all of these images are non-persistent. The wineprefix will be refreshed after each run, so we're not messing stuff up.
+    ENV WINEPREFIX=/root/.wine-pipelight
 
+    # Init wine, install dxvk. It will fail if it doesn't have X, so give it xvfb.
+    RUN xvfb-run winetricks dxvk
 
 # Save intermediary image, generally for dev.
 wine-save:
@@ -83,8 +104,8 @@ pipelight-builder:
     # Configure with win64 support and make.
     RUN ./configure --wine-path=/opt/wine-staging/bin/wine --with-win64 --win64-cxx=x86_64-w64-mingw32-g++ --win64-flags="-static-libgcc -static-libstdc++ -static" --wine64-path=/opt/wine-staging/bin/wine64
     RUN make
-    # Package as deb.
-    RUN checkinstall -D --install=no --nodoc -y --pkgname=pipelight-multi --pkglicense=GPL2 --pkgversion=0.2.8.2 --pkgsource="http://ppa.launchpad.net/pipelight/stable/ubuntu/pool/main/p/pipelight-multi/" --requires="libc6 \(\>= 2.14\),libgcc1 \(\>= 1:3.0\),libstdc++6 \(\>= 5.2\),libx11-6,debconf \(\>= 0.5\) \| debconf-2.0,mesa-utils,ttf-mscorefonts-installer,wget,zenity \| kde-baseapps-bin,zenity \| qdbus,wine-staging,bash \(\>= 4.0\),unzip,cabextract,gnupg" --arch=amd64
+    # Package as deb. Note: this depends on wine-staging-amd64-local, which is our patched version.
+    RUN checkinstall -D --install=no --nodoc -y --pkgname=pipelight-multi --pkglicense=GPL2 --pkgversion=0.2.8.2 --pkgsource="http://ppa.launchpad.net/pipelight/stable/ubuntu/pool/main/p/pipelight-multi/" --requires="libc6 \(\>= 2.14\),libgcc1 \(\>= 1:3.0\),libstdc++6 \(\>= 5.2\),libx11-6,debconf \(\>= 0.5\) \| debconf-2.0,mesa-utils,ttf-mscorefonts-installer,wget,zenity \| kde-baseapps-bin,zenity \| qdbus,wine-staging-amd64-local,bash \(\>= 4.0\),unzip,cabextract,gnupg" --arch=amd64
     # Save the resulting deb.
     SAVE ARTIFACT /pipelight-multi-0.2.8.2~ubuntu16.04.1/pipelight-multi_0.2.8.2-1_amd64.deb
 
@@ -104,7 +125,6 @@ pipelight:
     RUN pipelight-plugin --create-mozilla-plugins
     # Cleanup unneeded packages.
     RUN apt-get autoremove --yes
-
 
 # Save intermediary image, generally for dev.
 pipelight-save:

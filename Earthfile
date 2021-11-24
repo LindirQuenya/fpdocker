@@ -12,3 +12,6 @@ all-trunk:
     BUILD ./earthfiles/+wine-save
     BUILD ./earthfiles/+pipelight-save
     BUILD ./earthfiles/+basilisk-save
+
+build-wine:
+    BUILD ./earthfiles/winepatch+wine-builder

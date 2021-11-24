@@ -1,6 +1,6 @@
-These are Earthfiles, an alternative to dockerfiles. They should create a bunch of docker images.
+These are Earthfiles, an alternative to dockerfiles, with some makefile mixed in. They should create a bunch of docker images.
 
-They have the same dependency structure as the dockerfiles. The information is just presented slightly differently.
+Here is a somewhat outdated version of our dependency tree. A bunch of stuff is missing from it.
 ```
                                        ubuntu
                                          |

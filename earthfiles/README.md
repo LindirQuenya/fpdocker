@@ -1,4 +1,5 @@
-These are Earthfiles, an alternative to dockerfiles, with some makefile mixed in. They should create a bunch of docker images.
+These are Earthfiles, an alternative to dockerfiles, with some makefile mixed in. They should create a bunch of docker images.  
+The rationale for using earthly over docker is that earthly will build non-dependent images in parallel.
 
 Here is a somewhat outdated version of our dependency tree. A bunch of stuff is missing from it.
 ```

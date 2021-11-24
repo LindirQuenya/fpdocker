@@ -3,4 +3,5 @@ debuglogs
 # Ignore the local UnityTest files, as they're simply too big.
 UnityTest/*.html
 UnityTest/*.unity3d
-*.deb
+# Don't ignore debs, we don't want to force everyone to rebuild wine.
+#*.deb

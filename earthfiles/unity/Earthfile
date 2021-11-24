@@ -14,10 +14,8 @@ unity5x:
     RUN sed -i "s/211563777a14bd3956a4d74ce8a2ed8f6374c13d7ba495d12329f5eb346b9e99/$(wget -qO- http://webplayer.unity3d.com/download_webplayer-3.x/UnityWebPlayer.exe | sha256sum | cut -d ' ' -f1)/g" /usr/local/share/pipelight/install-dependency
     # Initial setup will run when Basilisk is opened, and closed 20 seconds later.
     COPY pipelightinit.sh /pipelightinit.sh
+    # This runs basilisk, waits 20s, kills basilisk, and installs dxvk.
     RUN xvfb-run /pipelightinit.sh
     RUN rm /pipelightinit.sh
-    # Install dxvk. It will fail if it doesn't have X, so give it xvfb.
-    RUN xvfb-run winetricks dxvk
-    
     SAVE IMAGE fpdocker-5xunity:latest
     SAVE IMAGE fpdocker-5xunity:$CURRVERSION

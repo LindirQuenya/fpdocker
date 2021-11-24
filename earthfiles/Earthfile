@@ -69,15 +69,7 @@ wine:
     RUN chmod +x /opt/wine-staging/bin/winetricks
     # Add wine-staging to PATH
     ENV PATH="/opt/wine-staging/bin:${PATH}"
-    # Disable wine startup prompts. This allows us to init wine without interactivity.
-    ENV WINEDLLOVERRIDES="mscoree,mshtml="
-    # Set wineprefix to be the pipelight one.
-    # This will be confusing, but it will save space.
-    # Remember, all of these images are non-persistent. The wineprefix will be refreshed after each run, so we're not messing stuff up.
-    ENV WINEPREFIX=/root/.wine-pipelight
 
-    # Init wine, install dxvk. It will fail if it doesn't have X, so give it xvfb.
-    RUN xvfb-run winetricks dxvk
 
 # Save intermediary image, generally for dev.
 wine-save:
@@ -125,6 +117,11 @@ pipelight:
     RUN pipelight-plugin --create-mozilla-plugins
     # Cleanup unneeded packages.
     RUN apt-get autoremove --yes
+    # Disable wine startup prompts. This allows us to init wine without interactivity.
+    ENV WINEDLLOVERRIDES="mscoree,mshtml="
+    # Set wineprefix to be the pipelight one, so that I don't have to specify each time.
+    ENV WINEPREFIX=/root/.wine-pipelight
+
 
 # Save intermediary image, generally for dev.
 pipelight-save:

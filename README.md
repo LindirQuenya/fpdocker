@@ -1,7 +1,7 @@
 # fpdocker
 Dockerfiles for use in portable Linux version of the Flashpoint Project.
 
-To build this, you will need [earthly](earthly.dev).
+To build this, you will need [earthly](https://earthly.dev).
 
 Build and Run
 ========

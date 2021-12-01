@@ -1,3 +1,5 @@
+This repo has moved to https://gitlab.fp.unstable.life/flashpoint/software/fpdocker. This version will be archived.
+
 # fpdocker
 Dockerfiles for use in portable Linux version of the Flashpoint Project.
 
